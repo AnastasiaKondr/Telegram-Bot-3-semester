@@ -1,19 +1,19 @@
 package org.example;
-import java.util.Scanner;
-
 
 public class Main {
     public static void main(String[] args) {
 
-        Scanner in = new Scanner(System.in);
-        Bot1 bot = new Bot1();
-        bot.hello();
-        System.out.println("Please input 1 if you want me to return your text");
-        Integer op = in.nextInt();
-        while (op == 1) {
-            bot.itext();
-            System.out.println("input 1 if you want me to return your text");
-            op = in.nextInt();
+        Reader reader = new ReaderConsole();
+        Writer writer = new WriterConsole();
+        Handler handler = new SimpleHandler();
+
+        while (true) {
+            BotRequest request = reader.read();
+            if (request.getMessage().isEmpty()) {
+                break;
+            }
+            BotResponse response = handler.returnResponse(request);
+            writer.write(response);
         }
     }
 }
