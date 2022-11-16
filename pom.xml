@@ -42,12 +42,6 @@
             <version>${telegrambots.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.telegram</groupId>
-            <artifactId>telegrambots-spring-boot-starter</artifactId>
-            <version>${telegrambots.version}</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
