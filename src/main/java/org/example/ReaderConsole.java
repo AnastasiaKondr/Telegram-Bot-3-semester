@@ -7,5 +7,4 @@ public class ReaderConsole implements Reader{
         Scanner scanner = new Scanner(System.in);
         return new BotRequest(scanner.nextLine());
     }
-
 }
