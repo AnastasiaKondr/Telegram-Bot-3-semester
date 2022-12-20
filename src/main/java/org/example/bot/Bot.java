@@ -1,5 +1,6 @@
-package org.example;
+package org.example.bot;
 
+import org.example.handling.TelegramHandler;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -9,12 +10,17 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class Bot extends TelegramLongPollingBot {
     private final String botName;
     private final String botToken;
-    TelegramHandler handler;
+    private final TelegramHandler handler;
+    private final Reformer reformer;
+    private final User user;
+
 
     public Bot(String botName, String botToken) {
         this.botName = botName;
         this.botToken = botToken;
-        handler = new TelegramHandler();
+        this.reformer = new Reformer();
+        this.user = new User(null);
+        this.handler = new CommandHandler(user, mapWithRightAnswers);
     }
 
     @Override
